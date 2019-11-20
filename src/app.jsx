@@ -6,6 +6,7 @@ import API_KEY from "../config.js";
 export default function App() {
   const [meals, setMeals] = useState([]);
   const [nutrients, setNutrients] = useState({});
+  const [calories, setCalories] = useState(0);
 
   const getMeals = (calories = 2000, timeFrame = "day") => {
     axios
@@ -21,13 +22,16 @@ export default function App() {
   useEffect(() => {
     getMeals();
   }, []);
+  useEffect(() => {
+    console.log(calories);
+  }, [calories]);
   return (
     <div>
       {meals.length === 0 ? (
         "loading..."
       ) : (
         <div>
-          <MacroCalculator />
+          <MacroCalculator setCalories={setCalories} />
           <MealGenerator
             meals={meals}
             nutrients={nutrients}

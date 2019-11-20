@@ -6,7 +6,9 @@ export default function MealGenerator({ meals, nutrients, refreshMeals }) {
     <div>
       <h2>Daily Meal Plan</h2>
       <p>Meals generated based on 2000 calorie daily average</p>
-      <buton onClick={refreshMeals}>Refresh</buton>
+      <input type="button" onClick={refreshMeals}>
+        Refresh
+      </input>
       <div>
         {meals.map(meal => {
           return <Meal key={meal.id} meal={meal} />;
