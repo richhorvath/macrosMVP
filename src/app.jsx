@@ -25,6 +25,7 @@ export default function App() {
   return (
     <div>
       <CalorieCalculator setCalories={setCalories} getMeals={getMeals} />
+      <p>Your need to eat {calories} calories to meet your goals</p>
       <button
         onClick={() => {
           getMeals(calories);

@@ -6,18 +6,20 @@ const MacroCalculator = ({ setCalories }) => {
   const [age, setAge] = useState(0);
   const [activity, setActivity] = useState(0);
   const [bmr, setbmr] = useState(0);
+  const [goal, setGoal] = useState(0);
 
   useEffect(() => {
     setbmr(66 + 6.3 * weight + 12.9 * height - 6.8 * age);
   }, [height, weight, age]);
   useEffect(() => {
-    setCalories(Math.floor(bmr * activity));
-  }, [bmr, activity]);
+    setCalories(Math.floor(bmr * activity) + goal);
+  }, [bmr, activity, goal]);
 
   const handleActivity = event => {
     setActivity(event.target.value);
   };
 
+  const handleGoal = event => {};
   return (
     <div>
       <form action="">
@@ -99,6 +101,39 @@ const MacroCalculator = ({ setCalories }) => {
             If you are extra active (very hard exercise/sports & physical job or
             2x training)
           </label>
+          <h3>What are your weight goals</h3>
+          <div className="weight-goal-radiogroup">
+            <label>
+              <input
+                type="radio"
+                onChange={handleGoal}
+                name="goal"
+                checked={goal === "-500"}
+                value={"-500"}
+              />
+              Lose Weight
+            </label>
+            <label>
+              <input
+                type="radio"
+                onChange={handleGoal}
+                name="goal"
+                checked={goal === "0"}
+                value="0"
+              />
+              Maintain
+            </label>
+            <label>
+              <input
+                type="radio"
+                onChange={handleGoal}
+                name="goal"
+                checked={goal === "+500"}
+                value="+500"
+              />
+              Gain Weight
+            </label>
+          </div>
         </div>
       </form>
     </div>
