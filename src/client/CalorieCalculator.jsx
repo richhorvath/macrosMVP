@@ -12,14 +12,16 @@ const MacroCalculator = ({ setCalories }) => {
     setbmr(66 + 6.3 * weight + 12.9 * height - 6.8 * age);
   }, [height, weight, age]);
   useEffect(() => {
-    setCalories(Math.floor(bmr * activity) + goal);
+    setCalories(Math.floor(bmr * activity) + Number(goal));
   }, [bmr, activity, goal]);
 
   const handleActivity = event => {
     setActivity(event.target.value);
   };
 
-  const handleGoal = event => {};
+  const handleGoal = event => {
+    setGoal(event.target.value);
+  };
   return (
     <div>
       <form action="">
