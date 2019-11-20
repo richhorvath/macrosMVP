@@ -1,14 +1,24 @@
 import React from "react";
 import Meal from "./Meal.jsx";
 
-export default function MealGenerator({ meals, nutrients, refreshMeals }) {
+export default function MealGenerator({
+  meals,
+  nutrients,
+  refreshMeals,
+  calories,
+  getMeals
+}) {
   return (
     <div>
       <h2>Daily Meal Plan</h2>
-      <p>Meals generated based on 2000 calorie daily average</p>
-      <input type="button" onClick={refreshMeals}>
+      <p>Meal Plan Based on {calories === 0 ? 2000 : calories} calorie diet</p>
+      <button
+        onClick={() => {
+          refreshMeals(calories);
+        }}
+      >
         Refresh
-      </input>
+      </button>
       <div>
         {meals.map(meal => {
           return <Meal key={meal.id} meal={meal} />;

@@ -11,7 +11,7 @@ export default function App() {
   const getMeals = (calories = 2000, timeFrame = "day") => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=${API_KEY}&calorieTarget=${calories}&timeFrame=${timeFrame}`
+        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=${API_KEY}&targetCalories=${calories}&timeFrame=${timeFrame}`
       )
       .then(results => {
         setMeals(results.data.meals);
@@ -20,22 +20,25 @@ export default function App() {
   };
 
   useEffect(() => {
-    getMeals();
-  }, []);
-  useEffect(() => {
     console.log(calories);
   }, [calories]);
   return (
     <div>
-      {meals.length === 0 ? (
-        "loading..."
-      ) : (
+      <MacroCalculator setCalories={setCalories} getMeals={getMeals} />
+      <button
+        onClick={() => {
+          getMeals(calories);
+        }}
+      >
+        Generate Meals
+      </button>
+      {meals.length === 0 ? null : (
         <div>
-          <MacroCalculator setCalories={setCalories} />
           <MealGenerator
             meals={meals}
             nutrients={nutrients}
             refreshMeals={getMeals}
+            calories={calories}
           />{" "}
         </div>
       )}
