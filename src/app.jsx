@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MacroCalculator from "./client/MacroCalculator.jsx";
+import CalorieCalculator from "./client/CalorieCalculator.jsx";
 import MealGenerator from "./client/MealGenerator.jsx";
 import axios from "axios";
 import API_KEY from "../config.js";
@@ -24,7 +24,7 @@ export default function App() {
   }, [calories]);
   return (
     <div>
-      <MacroCalculator setCalories={setCalories} getMeals={getMeals} />
+      <CalorieCalculator setCalories={setCalories} getMeals={getMeals} />
       <button
         onClick={() => {
           getMeals(calories);
