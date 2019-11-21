@@ -1,4 +1,20 @@
-h1 {
-  color: white;
-  background-color: black;
+.calorie-calculator-container {
+  display: flex;
+  flex-direction: column;
+}
+.activity-radios {
+  display: flex;
+  flex-direction: column;
+}
+.gender-selector {
+  width: 75px;
+}
+.activity {
+  margin-bottom: 5px;
+}
+#height-input,
+#weight-input,
+#age-input {
+  width: 100px;
+  margin-bottom: 5px;
 }
