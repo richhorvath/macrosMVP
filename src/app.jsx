@@ -5,6 +5,7 @@ import Macronutrients from "./client/Macronutrients.jsx";
 import axios from "axios";
 export default function App() {
   let API_KEY = process.env.API_KEY;
+  console.log(API_KEY);
   const [meals, setMeals] = useState([]);
   const [nutrients, setNutrients] = useState({});
   const [calories, setCalories] = useState(0);
