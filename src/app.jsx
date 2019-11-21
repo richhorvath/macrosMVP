@@ -37,7 +37,10 @@ export default function App() {
   return (
     <div>
       <CalorieCalculator setCalories={setCalories} getMeals={getMeals} />
-      <p>Your need to eat {calories} calories to meet your goals</p>
+      {calories === 0 ? null : (
+        <p>Your need to eat {calories} calories to meet your goals</p>
+      )}
+
       <Macronutrients
         calories={calories}
         getMacro={getMacro}
