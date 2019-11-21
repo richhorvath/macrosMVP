@@ -15,8 +15,7 @@ export default function App() {
   const getMacro = (percentageOfCalories, conversionRate) => {
     let caloriesFromNutrient = calories * percentageOfCalories;
     let gramsOfNutrient = Math.floor(caloriesFromNutrient / conversionRate);
-    console.log("calories from nutrient", caloriesFromNutrient);
-    console.log("grams", gramsOfNutrient);
+
     return gramsOfNutrient;
   };
 
@@ -31,9 +30,7 @@ export default function App() {
       });
   };
 
-  useEffect(() => {
-    console.log(calories);
-  }, [calories]);
+  useEffect(() => {}, [calories]);
   return (
     <div>
       <h1>MacroMe</h1>
@@ -70,6 +67,18 @@ export default function App() {
           />{" "}
         </div>
       )}
+      <p>
+        Need more recipes? try{" "}
+        <a href="http://ec2-34-216-243-255.us-west-2.compute.amazonaws.com/">
+          NOM PANTRY
+        </a>{" "}
+      </p>
+      <p>
+        Want to know how much these recipes will cost you? try{" "}
+        <a href="http://ec2-3-17-167-188.us-east-2.compute.amazonaws.com/">
+          NOM MONEY
+        </a>
+      </p>
     </div>
   );
 }

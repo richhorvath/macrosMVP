@@ -13,7 +13,6 @@ export default function Meal({ meal }) {
         let data = results.data;
         delete data.bad;
         delete data.good;
-        console.log(data);
         setNutrition(data);
       });
   };
