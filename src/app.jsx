@@ -4,6 +4,7 @@ import MealGenerator from "./client/MealGenerator.jsx";
 import Macronutrients from "./client/Macronutrients.jsx";
 import axios from "axios";
 export default function App() {
+  let API_KEY = process.env.API_KEY;
   const [meals, setMeals] = useState([]);
   const [nutrients, setNutrients] = useState({});
   const [calories, setCalories] = useState(0);
@@ -21,7 +22,7 @@ export default function App() {
   const getMeals = (calories = 2000, timeFrame = "day") => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=${process.env.API_KEY}&targetCalories=${calories}&timeFrame=${timeFrame}`
+        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=${API_KEY}&targetCalories=${calories}&timeFrame=${timeFrame}`
       )
       .then(results => {
         setMeals(results.data.meals);

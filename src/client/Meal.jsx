@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 export default function Meal({ meal }) {
   const [nutrition, setNutrition] = useState({});
+  let API_KEY = process.env.API_KEY;
+
   const getNutrition = () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/${meal.id}/nutritionWidget.json?apiKey=${process.env.API_KEY}`
+        `https://api.spoonacular.com/recipes/${meal.id}/nutritionWidget.json?apiKey=${API_KEY}`
       )
       .then(results => {
         let data = results.data;
