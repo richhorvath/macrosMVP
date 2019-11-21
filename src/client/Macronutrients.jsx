@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 
-export default function Macronutrients({ calories }) {
-  const [protein, setProtein] = useState(0.3);
-  const [carbs, setCarbs] = useState(0.4);
-  const [fat, setFat] = useState(0.3);
-
-  const getMacro = (percentageOfCalories, conversionRate) => {
-    let caloriesFromNutrient = calories * percentageOfCalories;
-    let gramsOfNutrient = Math.floor(caloriesFromNutrient / conversionRate);
-    console.log("calories from nutrient", caloriesFromNutrient);
-    console.log("grams", gramsOfNutrient);
-    return gramsOfNutrient;
-  };
-
+export default function Macronutrients({
+  calories,
+  protein,
+  carbs,
+  fat,
+  getMacro,
+  setProtein,
+  setCarbs,
+  setFat
+}) {
   return (
     <div className="macronutrient-display">
       <div className="macros">
