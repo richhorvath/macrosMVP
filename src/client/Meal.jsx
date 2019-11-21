@@ -7,7 +7,7 @@ export default function Meal({ meal }) {
   const getNutrition = () => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/${meal.id}/nutritionWidget.json?apiKey=${API_KEY}`
+        `https://api.spoonacular.com/recipes/${meal.id}/nutritionWidget.json?apiKey=9da93ebbfea34b3fb91e490b11de913f`
       )
       .then(results => {
         let data = results.data;
