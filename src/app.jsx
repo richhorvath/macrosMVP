@@ -4,7 +4,6 @@ import MealGenerator from "./client/MealGenerator.jsx";
 import Macronutrients from "./client/Macronutrients.jsx";
 import axios from "axios";
 import API_KEY from "../config.js";
-
 export default function App() {
   const [meals, setMeals] = useState([]);
   const [nutrients, setNutrients] = useState({});

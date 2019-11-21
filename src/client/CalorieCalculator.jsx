@@ -7,10 +7,21 @@ const MacroCalculator = ({ setCalories }) => {
   const [activity, setActivity] = useState(0);
   const [bmr, setbmr] = useState(0);
   const [goal, setGoal] = useState(0);
+  const [gender, setGender] = useState("male");
 
+  const maleCalories = (weight, height, age) => {
+    return 66 + 6.3 * weight + 12.9 * height - 6.8 * age;
+  };
+  const femaleCalories = (weight, height, age) => {
+    return 665 + 4.3 * weight + 4.7 * height - 4.7 * age;
+  };
   useEffect(() => {
-    setbmr(66 + 6.3 * weight + 12.9 * height - 6.8 * age);
-  }, [height, weight, age]);
+    if (gender === "male") {
+      setbmr(maleCalories(weight, height, age));
+    } else {
+      setbmr(femaleCalories(weight, height, age));
+    }
+  }, [height, weight, age, gender]);
   useEffect(() => {
     setCalories(Math.floor(bmr * activity) + Number(goal));
   }, [bmr, activity, goal]);
@@ -49,6 +60,19 @@ const MacroCalculator = ({ setCalories }) => {
           type="number"
           id="age-input"
         />
+        <label>
+          Gender
+          <select
+            onChange={event => {
+              setGender(event.target.value);
+            }}
+            className="gender-selector"
+          >
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </label>
+
         <h2>Activity Level</h2>
         <div className="activity-radios">
           <label>
