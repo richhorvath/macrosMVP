@@ -33,7 +33,7 @@ export default function App() {
   useEffect(() => {}, [calories]);
   return (
     <div>
-      <h1>MacroMe</h1>
+      <h1>NOM FIT</h1>
       <p>Free meal plans fit for your needs</p>
       <CalorieCalculator setCalories={setCalories} getMeals={getMeals} />
       {calories === 0 ? null : (
