@@ -22,7 +22,7 @@ export default function App() {
   const getMeals = (calories = 2000, timeFrame = "day") => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=$9da93ebbfea34b3fb91e490b11de913f&targetCalories=${calories}&timeFrame=${timeFrame}`
+        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=9da93ebbfea34b3fb91e490b11de913f&targetCalories=${calories}&timeFrame=${timeFrame}`
       )
       .then(results => {
         setMeals(results.data.meals);
