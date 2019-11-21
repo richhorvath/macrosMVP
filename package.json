@@ -1,6 +1,10 @@
 {
   "name": "empty-project",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "3.5.2"
+  },
   "description": "",
   "main": "index.js",
   "keywords": [],
@@ -8,10 +12,8 @@
   "license": "ISC",
   "scripts": {
     "start": "node src/server/index.js",
-    "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "server-dev": "nodemon src/server/index.js",
-    "build-prod": "webpack -p --mode production",
     "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
