@@ -3,7 +3,6 @@ import CalorieCalculator from "./client/CalorieCalculator.jsx";
 import MealGenerator from "./client/MealGenerator.jsx";
 import Macronutrients from "./client/Macronutrients.jsx";
 import axios from "axios";
-import API_KEY from "../config.js";
 export default function App() {
   const [meals, setMeals] = useState([]);
   const [nutrients, setNutrients] = useState({});
@@ -11,7 +10,6 @@ export default function App() {
   const [protein, setProtein] = useState(0.3);
   const [carbs, setCarbs] = useState(0.4);
   const [fat, setFat] = useState(0.3);
-
   const getMacro = (percentageOfCalories, conversionRate) => {
     let caloriesFromNutrient = calories * percentageOfCalories;
     let gramsOfNutrient = Math.floor(caloriesFromNutrient / conversionRate);
@@ -23,7 +21,7 @@ export default function App() {
   const getMeals = (calories = 2000, timeFrame = "day") => {
     axios
       .get(
-        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=${API_KEY}&targetCalories=${calories}&timeFrame=${timeFrame}`
+        `https://api.spoonacular.com/recipes/mealplans/generate?apiKey=${process.env.API_KEY}&targetCalories=${calories}&timeFrame=${timeFrame}`
       )
       .then(results => {
         setMeals(results.data.meals);
@@ -36,6 +34,8 @@ export default function App() {
   }, [calories]);
   return (
     <div>
+      <h1>MacroMe</h1>
+      <p>Free meal plans fit for your needs</p>
       <CalorieCalculator setCalories={setCalories} getMeals={getMeals} />
       {calories === 0 ? null : (
         <p>Your need to eat {calories} calories to meet your goals</p>

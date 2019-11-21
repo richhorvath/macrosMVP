@@ -7,10 +7,12 @@
   "author": "",
   "license": "ISC",
   "scripts": {
+    "start": "node src/server/index.js",
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development --watch",
     "server-dev": "nodemon src/server/index.js",
-    "build-prod": "webpack -p --mode production"
+    "build-prod": "webpack -p --mode production",
+    "heroku-postbuild": "webpack -p"
   },
   "dependencies": {
     "react": "^16.12.0",
