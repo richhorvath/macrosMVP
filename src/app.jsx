@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CalorieCalculator from "./client/CalorieCalculator.jsx";
 import MealGenerator from "./client/MealGenerator.jsx";
+import Macronutrients from "./client/Macronutrients.jsx";
 import axios from "axios";
 import API_KEY from "../config.js";
 export default function App() {
@@ -25,6 +26,8 @@ export default function App() {
   return (
     <div>
       <CalorieCalculator setCalories={setCalories} getMeals={getMeals} />
+      <p>Your need to eat {calories} calories to meet your goals</p>
+      <Macronutrients calories={calories} />
       <button
         onClick={() => {
           getMeals(calories);
